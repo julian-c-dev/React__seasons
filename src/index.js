@@ -8,10 +8,12 @@ class App extends React.Component {
     super(props);
 
     this.state = { lat: null, errorMessage: "" };
+  }
 
+  componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
-        // ! we called setState
+        // ! we called setState to updated our state which leads to rerender our comp.
         this.setState({
           lat: position.coords.latitude,
         });
@@ -20,18 +22,6 @@ class App extends React.Component {
         this.setState({ errorMessage: err.message });
       }
     );
-  }
-  // ! Life Cycles
-  componentDidMount() {
-    console.log("My component was rendered to the screen");
-  }
-
-  componentDidUpdate() {
-    console.log("My component was just updated and it rerendered");
-  }
-
-  componentWillUnmount() {
-    console.log("My component was just removed");
   }
 
   // React says we have to define render!!
