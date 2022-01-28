@@ -21,6 +21,18 @@ class App extends React.Component {
       }
     );
   }
+  // ! Life Cycles
+  componentDidMount() {
+    console.log("My component was rendered to the screen");
+  }
+
+  componentDidUpdate() {
+    console.log("My component was just updated and it rerendered");
+  }
+
+  componentWillUnmount() {
+    console.log("My component was just removed");
+  }
 
   // React says we have to define render!!
   render() {
