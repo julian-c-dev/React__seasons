@@ -3,24 +3,12 @@ import ReactDOM from "react-dom";
 //import SeasonDisplay from "./seasonDisplay";
 
 class App extends React.Component {
-  // Estate within the Constructor Method
-  constructor(props) {
-    super(props);
-
-    this.state = { lat: null, errorMessage: "" };
-  }
+  state = { lat: null, errorMessage: "" };
 
   componentDidMount() {
     window.navigator.geolocation.getCurrentPosition(
-      (position) => {
-        // ! we called setState to updated our state which leads to rerender our comp.
-        this.setState({
-          lat: position.coords.latitude,
-        });
-      },
-      (err) => {
-        this.setState({ errorMessage: err.message });
-      }
+      (position) => this.setState({ lat: position.coords.latitude }),
+      (err) => this.setState({ errorMessage: err.message })
     );
   }
 
